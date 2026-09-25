@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0b0b0d">
+<title>住宅ローン比較</title>
+<style>
+  * { box-sizing: border-box; }
+  :root {
+    --bg:#0b0b0d; --card:#151518; --card2:#1d1d21; --line:#2c2c31;
+    --text:#f5f5f7; --muted:#a5a5ad; --accent:#ffffff;
+  }
+  body {
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;
+    min-height:100vh;
+  }
+  .wrap { width:min(760px,100%); margin:0 auto; padding:24px 16px 48px; }
+  h1 { font-size:26px; margin:4px 0 6px; letter-spacing:.02em; }
+  .sub { color:var(--muted); font-size:13px; margin-bottom:22px; }
+  .panel {
+    background:var(--card); border:1px solid var(--line); border-radius:18px;
+    padding:18px; margin-bottom:16px;
+  }
+  label { display:block; font-size:13px; color:var(--muted); margin-bottom:8px; }
+  .input-row { position:relative; margin-bottom:16px; }
+  input[type="number"] {
+    width:100%; border:1px solid var(--line); background:#101013; color:var(--text);
+    border-radius:12px; padding:14px 48px 14px 14px; font-size:18px; outline:none;
+  }
+  input[type="number"]:focus { border-color:#66666f; }
+  .unit { position:absolute; right:14px; top:14px; color:var(--muted); }
+  .years { display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+  .year-chip {
+    position:relative; display:inline-flex; align-items:center; gap:6px;
+    background:var(--card2); border:1px solid var(--line); border-radius:999px;
+    padding:8px 11px; font-size:14px; cursor:pointer; user-select:none;
+  }
+  .year-chip input { accent-color:#fff; }
+  .custom-row { display:flex; gap:8px; margin-top:10px; }
+  .custom-row input { padding-right:42px; font-size:16px; }
+  button {
+    border:0; border-radius:12px; padding:12px 16px; font-size:14px;
+    cursor:pointer; background:#f2f2f2; color:#111; font-weight:700;
+  }
+  button.secondary { background:var(--card2); color:var(--text); border:1px solid var(--line); }
+  .result-title { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+  .result-title h2 { font-size:18px; margin:0; }
+  .result-title span { color:var(--muted); font-size:12px; }
+  .cards { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+  .result {
+    background:#101013; border:1px solid var(--line); border-radius:14px; padding:15px;
+  }
+  .result .years-label { font-size:17px; font-weight:700; margin-bottom:13px; }
+  .metric { margin-top:10px; }
+  .metric .label { margin:0 0 3px; font-size:11px; }
+  .metric .value { font-size:18px; font-weight:700; }
+  .metric.main .value { font-size:21px; }
+  .note { color:var(--muted); font-size:11px; line-height:1.6; margin-top:14px; }
+  .empty { color:var(--muted); font-size:13px; text-align:center; padding:20px 0; }
+  .remove { background:none; border:0; color:var(--muted); padding:0 2px; font-size:16px; font-weight:400; }
+  @media (min-width:600px) {
+    .cards { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>住宅ローン比較</h1>
+  <div class="sub">借入条件を入力すると、返済期間ごとの月々の返済額と総支払額を比較できます。</div>
+
+  <section class="panel">
+    <label for="principal">借入金額</label>
+    <div class="input-row">
+      <input id="principal" type="number" inputmode="numeric" min="1" step="1" value="5000" aria-label="借入金額（万円）">
+      <span class="unit">万円</span>
+    </div>
+
+    <label for="rate">金利（年率）</label>
+    <div class="input-row">
+      <input id="rate" type="number" inputmode="decimal" min="0" step="0.01" value="1.30" aria-label="金利（年率）">
+      <span class="unit">%</span>
+    </div>
+
+    <label>返済期間</label>
+    <div class="years" id="yearChoices">
+      <label class="year-chip"><input type="checkbox" value="20" checked>20年</label>
+      <label class="year-chip"><input type="checkbox" value="35" checked>35年</label>
+      <label class="year-chip"><input type="checkbox" value="40" checked>40年</label>
+      <label class="year-chip"><input type="checkbox" value="50" checked>50年</label>
+    </div>
+
+    <div class="custom-row">
+      <div style="flex:1;position:relative">
+        <input id="customYear" type="number" inputmode="numeric" min="1" max="100" placeholder="自由な年数">
+        <span class="unit">年</span>
+      </div>
+      <button id="addYear" type="button">追加</button>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="result-title">
+      <h2>返済額比較</h2>
+      <span>元利均等返済</span>
+    </div>
+    <div class="cards" id="results"></div>
+    <div class="note">
+      ※ボーナス返済なし。金利は全期間一定として計算しています。<br>
+      ※結果はこの端末・ブラウザに保存されません。ページを閉じると入力内容は失われます。
+    </div>
+  </section>
+</div>
+
+<script>
+const principalEl = document.getElementById('principal');
+const rateEl = document.getElementById('rate');
+const yearChoices = document.getElementById('yearChoices');
+const customYear = document.getElementById('customYear');
+const addYear = document.getElementById('addYear');
+const results = document.getElementById('results');
+
+function yen(n) {
+  return Math.round(n).toLocaleString('ja-JP') + '円';
+}
+function man(n) {
+  return (n / 10000).toLocaleString('ja-JP', {
+    maximumFractionDigits: 1
+  }) + '万円';
+}
+function calcMonthly(principalYen, annualRate, years) {
+  const months = years * 12;
+  const r = annualRate / 100 / 12;
+  if (r === 0) return principalYen / months;
+  return principalYen * r * Math.pow(1+r, months) / (Math.pow(1+r, months)-1);
+}
+function getYears() {
+  return [...yearChoices.querySelectorAll('input[type="checkbox"]:checked')]
+    .map(x => Number(x.value))
+    .filter(x => x > 0)
+    .sort((a,b) => a-b);
+}
+function render() {
+  const principal = Number(principalEl.value) * 10000;
+  const rate = Number(rateEl.value);
+  const years = getYears();
+
+  results.innerHTML = '';
+  if (!principal || principal <= 0 || rate < 0 || !years.length) {
+    results.innerHTML = '<div class="empty">借入金額・金利・返済期間を入力してください。</div>';
+    return;
+  }
+
+  years.forEach(year => {
+    const monthly = calcMonthly(principal, rate, year);
+    const total = monthly * year * 12;
+    const interest = total - principal;
+
+    const card = document.createElement('div');
+    card.className = 'result';
+    card.innerHTML = `
+      <div class="years-label">${year}年ローン</div>
+      <div class="metric main">
+        <div class="label">月々の返済額</div>
+        <div class="value">${yen(monthly)}</div>
+      </div>
+      <div class="metric">
+        <div class="label">総支払額</div>
+        <div class="value">${man(total)}</div>
+      </div>
+      <div class="metric">
+        <div class="label">うち利息</div>
+        <div class="value">${man(interest)}</div>
+      </div>
+    `;
+    results.appendChild(card);
+  });
+}
+
+[principalEl, rateEl].forEach(el => el.addEventListener('input', render));
+yearChoices.addEventListener('change', render);
+
+addYear.addEventListener('click', () => {
+  const year = Number(customYear.value);
+  if (!Number.isInteger(year) || year < 1 || year > 100) {
+    alert('1〜100年の整数を入力してください。');
+    return;
+  }
+  if ([...yearChoices.querySelectorAll('input')].some(x => Number(x.value) === year)) {
+    customYear.value = '';
+    render();
+    return;
+  }
+
+  const label = document.createElement('label');
+  label.className = 'year-chip';
+  label.innerHTML = `<input type="checkbox" value="${year}" checked>${year}年
+    <button class="remove" type="button" aria-label="${year}年を削除">×</button>`;
+  label.querySelector('.remove').addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    label.remove();
+    render();
+  });
+  yearChoices.appendChild(label);
+  customYear.value = '';
+  render();
+});
+
+customYear.addEventListener('keydown', e => {
+  if (e.key === 'Enter') addYear.click();
+});
+
+render();
+</script>
+</body>
+</html>
