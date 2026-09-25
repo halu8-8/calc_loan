@@ -6,37 +6,17 @@
 <meta name="theme-color" content="#0b0b0d">
 <title>住宅ローン・NISA比較</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#0b0b0d;color:#f5f5f7;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif}
-.wrap{max-width:820px;margin:auto;padding:22px 15px 50px}
-h1{font-size:25px;margin:0 0 6px}.lead{color:#a7a7ae;font-size:13px;line-height:1.7;margin-bottom:18px}
-.panel{background:#151518;border:1px solid #303037;border-radius:18px;padding:17px;margin-bottom:14px}
-.field{margin-bottom:15px}.field:last-child{margin-bottom:0}
-.label{display:block;color:#aaaab2;font-size:13px;margin-bottom:7px}
-.inputbox{position:relative}.inputbox input{width:100%;height:50px;background:#0f0f12;color:#fff;border:1px solid #3a3a41;border-radius:11px;padding:0 48px 0 13px;font-size:18px;outline:0}
-.inputbox input:focus{border-color:#777}.unit{position:absolute;right:14px;top:15px;color:#aaa;pointer-events:none}
-.checks{display:flex;flex-wrap:wrap;gap:8px}
-.check{display:inline-flex;align-items:center;gap:7px;background:#1d1d21;border:1px solid #34343b;border-radius:999px;padding:9px 11px;font-size:14px;cursor:pointer;touch-action:manipulation}
-.check input{appearance:none;-webkit-appearance:none;width:20px;height:20px;margin:0;background:#101013;border:1px solid #707078;border-radius:5px}
-.check input:checked{background:#f2f2f2;border-color:#f2f2f2}
-.check input:checked:after{content:"✓";display:block;color:#111;font-size:16px;font-weight:800;text-align:center;line-height:19px}
-.custom{display:flex;gap:8px;margin-top:9px}.custom .inputbox{flex:1}
-button{border:0;border-radius:11px;padding:0 16px;background:#f2f2f2;color:#111;font-weight:700}
-.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}
-.section-head h2{font-size:18px;margin:0}.section-head span{font-size:11px;color:#999}
-.cards{display:grid;grid-template-columns:1fr;gap:10px}
-.card{background:#101013;border:1px solid #303037;border-radius:14px;padding:14px}
-.card h3{margin:0 0 12px;font-size:18px}.metric{margin-top:9px}.metric:first-of-type{margin-top:0}
-.mlabel{font-size:11px;color:#999;margin-bottom:3px}.value{font-size:18px;font-weight:700}.large{font-size:21px}
-.compare{background:#101013;border:1px solid #303037;border-radius:14px;padding:14px}
-.compare h3{font-size:17px;margin:0 0 12px}.block{border:1px solid #29292f;border-radius:11px;padding:11px;margin-top:9px}.block:first-of-type{margin-top:0}
-.block-title{font-size:13px;font-weight:700;margin-bottom:9px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.item .mlabel{font-size:10px}.item .value{font-size:15px}
-.highlight{margin-top:10px;border:1px solid #393940;border-radius:10px;padding:11px}
-.highlight .value{font-size:19px}
-.note{font-size:11px;color:#85858d;line-height:1.7;margin-top:12px}
-.empty{color:#999;text-align:center;padding:20px 5px;font-size:13px}
+*{box-sizing:border-box}body{margin:0;background:#0b0b0d;color:#f5f5f7;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif}
+.wrap{max-width:900px;margin:auto;padding:22px 15px 55px}h1{font-size:25px;margin:0 0 6px}.lead{color:#aaaab2;font-size:13px;line-height:1.7;margin-bottom:18px}
+.panel{background:#151518;border:1px solid #303037;border-radius:18px;padding:17px;margin-bottom:14px}.field{margin-bottom:15px}.label{display:block;color:#aaaab2;font-size:13px;margin-bottom:7px}
+.inputbox{position:relative}.inputbox input{width:100%;height:50px;background:#0f0f12;color:#fff;border:1px solid #3a3a41;border-radius:11px;padding:0 48px 0 13px;font-size:18px;outline:0}.unit{position:absolute;right:14px;top:15px;color:#aaa;pointer-events:none}
+.checks{display:flex;flex-wrap:wrap;gap:8px}.check{display:inline-flex;align-items:center;gap:7px;background:#1d1d21;border:1px solid #34343b;border-radius:999px;padding:9px 11px;font-size:14px;cursor:pointer;touch-action:manipulation}
+.check input{appearance:none;-webkit-appearance:none;width:20px;height:20px;margin:0;background:#101013;border:1px solid #707078;border-radius:5px}.check input:checked{background:#f2f2f2;border-color:#f2f2f2}.check input:checked:after{content:"✓";display:block;color:#111;font-size:16px;font-weight:800;text-align:center;line-height:19px}
+.custom{display:flex;gap:8px;margin-top:9px}.custom .inputbox{flex:1}button{border:0;border-radius:11px;padding:0 16px;background:#f2f2f2;color:#111;font-weight:700}
+.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}.section-head h2{font-size:18px;margin:0}.section-head span{font-size:11px;color:#999}
+.cards{display:grid;grid-template-columns:1fr;gap:10px}.card{background:#101013;border:1px solid #303037;border-radius:14px;padding:14px}.card h3{margin:0 0 12px;font-size:18px}.metric{margin-top:9px}.mlabel{font-size:11px;color:#999;margin-bottom:3px}.value{font-size:18px;font-weight:700}.large{font-size:21px}
+.compare-table-wrap{overflow-x:auto;border:1px solid #303037;border-radius:13px}table{width:100%;border-collapse:collapse;min-width:620px;background:#101013}th,td{padding:11px 10px;border-bottom:1px solid #29292f;text-align:right;font-size:13px;white-space:nowrap}th:first-child,td:first-child{text-align:left}th{color:#aaa;background:#18181c;font-weight:600}tr:last-child td{border-bottom:0}
+.formula{margin-top:12px;background:#19191d;border:1px solid #34343b;border-radius:12px;padding:12px;font-size:12px;line-height:1.8;color:#c9c9cf}.formula b{color:#fff}.judgment{margin-top:12px;border:1px solid #34343b;border-radius:12px;padding:13px;background:#19191d}.judgment .title{font-size:14px;font-weight:800;margin-bottom:7px}.judgment .big{font-size:21px;font-weight:800}.winner{color:#4da3ff;font-weight:800}.note{font-size:11px;color:#85858d;line-height:1.7;margin-top:12px}.empty{color:#999;text-align:center;padding:20px 5px;font-size:13px}
 @media(min-width:650px){.cards{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
@@ -44,218 +24,40 @@ button{border:0;border-radius:11px;padding:0 16px;background:#f2f2f2;color:#111;
 <div class="wrap">
 <h1>住宅ローン・NISA比較</h1>
 <div class="lead">住宅ローンの返済額と、「頭金にする」または「同額をNISA等で運用する」場合を比較します。</div>
-
 <div class="panel">
-<div class="field">
-<label class="label">借入金額（頭金を入れる前）</label>
-<div class="inputbox"><input id="loan" type="number" inputmode="numeric" value="5000" min="1"><span class="unit">万円</span></div>
+<div class="field"><label class="label">借入金額（頭金を入れる前）</label><div class="inputbox"><input id="loan" type="number" inputmode="numeric" value="5000" min="1"><span class="unit">万円</span></div></div>
+<div class="field"><label class="label">住宅ローン金利</label><div class="inputbox"><input id="loanRate" type="number" inputmode="decimal" value="1.30" min="0" step="0.01"><span class="unit">%</span></div></div>
+<div class="field"><label class="label">頭金にする / NISA等に投資する金額</label><div class="inputbox"><input id="capital" type="number" inputmode="numeric" value="1000" min="0"><span class="unit">万円</span></div></div>
+<div class="field"><label class="label">NISA等の想定年利</label><div class="inputbox"><input id="investRate" type="number" inputmode="decimal" value="5.0" step="0.1" min="-99.9"><span class="unit">%</span></div></div>
+<div class="field"><label class="label">比較する返済期間</label>
+<div class="checks" id="checks"><label class="check"><input type="checkbox" value="20" checked>20年</label><label class="check"><input type="checkbox" value="35" checked>35年</label><label class="check"><input type="checkbox" value="40" checked>40年</label><label class="check"><input type="checkbox" value="50" checked>50年</label></div>
+<div class="custom"><div class="inputbox"><input id="custom" type="number" inputmode="numeric" placeholder="自由な年数" min="1" max="100"><span class="unit">年</span></div><button id="add" type="button">追加</button></div><div id="customList"></div></div>
 </div>
-<div class="field">
-<label class="label">住宅ローン金利</label>
-<div class="inputbox"><input id="loanRate" type="number" inputmode="decimal" value="1.30" min="0" step="0.01"><span class="unit">%</span></div>
+<div class="panel"><div class="section-head"><h2>ローン返済額</h2><span>元利均等・ボーナスなし</span></div><div class="cards" id="loanResults"></div></div>
+<div class="panel"><div class="section-head"><h2>頭金 vs NISA等</h2><span>①と②を比較</span></div><div id="compareResults"></div><div class="note">※投資は入力した年利が毎年一定で複利運用される単純モデルです。税金・手数料・価格変動は考慮しません。</div></div>
+<div class="panel"><div class="section-head"><h2>計算式</h2></div><div class="formula"><b>① 利息削減額</b> ＝ 頭金なしの総利息 − 頭金ありの総利息<br><b>② 運用益</b> ＝ 投資額 × (1＋想定年利)^年数 − 投資額<br><b>② − ①</b> ＝ 運用益 − 利息削減額<br><b>利息カバー率</b> ＝ ② ÷ 頭金なしの総利息 × 100</div></div>
 </div>
-<div class="field">
-<label class="label">頭金にする / NISA等に投資する金額</label>
-<div class="inputbox"><input id="capital" type="number" inputmode="numeric" value="1000" min="0"><span class="unit">万円</span></div>
-</div>
-<div class="field">
-<label class="label">NISA等の想定年利</label>
-<div class="inputbox"><input id="investRate" type="number" inputmode="decimal" value="5.0" step="0.1" min="-99.9"><span class="unit">%</span></div>
-</div>
-<div class="field">
-<label class="label">比較する返済期間</label>
-<div class="checks" id="checks">
-<label class="check"><input type="checkbox" value="20" checked>20年</label>
-<label class="check"><input type="checkbox" value="35" checked>35年</label>
-<label class="check"><input type="checkbox" value="40" checked>40年</label>
-<label class="check"><input type="checkbox" value="50" checked>50年</label>
-</div>
-<div class="custom">
-<div class="inputbox"><input id="custom" type="number" inputmode="numeric" placeholder="自由な年数" min="1" max="100"><span class="unit">年</span></div>
-<button id="add" type="button">追加</button>
-</div>
-<div id="customList"></div>
-</div>
-</div>
-
-<div class="panel">
-<div class="section-head"><h2>ローン返済額</h2><span>元利均等・ボーナスなし</span></div>
-<div class="cards" id="loanResults"></div>
-</div>
-
-<div class="panel">
-<div class="section-head"><h2>頭金 vs NISA等</h2><span>同額を比較</span></div>
-<div class="cards" id="compareResults"></div>
-<div class="note">※NISA等は入力した年利が毎年一定で複利運用される単純モデルです。税金・手数料・価格変動・NISA枠・金利変動は考慮しません。投資益と利息削減額は性質が異なるため、単純比較の参考値です。</div>
-</div>
-</div>
-
 <script>
 (function(){
-"use strict";
-
-var loan=document.getElementById("loan");
-var loanRate=document.getElementById("loanRate");
-var capital=document.getElementById("capital");
-var investRate=document.getElementById("investRate");
-var checks=document.getElementById("checks");
-var custom=document.getElementById("custom");
-var add=document.getElementById("add");
-var customList=document.getElementById("customList");
-var loanResults=document.getElementById("loanResults");
-var compareResults=document.getElementById("compareResults");
-var customYears=[];
-
-function money(n){
-  return Math.round(n).toLocaleString("ja-JP")+"円";
-}
-function man(n){
-  return (n/10000).toLocaleString("ja-JP",{maximumFractionDigits:1})+"万円";
-}
-function monthlyPayment(principal,annualRate,years){
-  var months=years*12;
-  var r=annualRate/100/12;
-  if(r===0) return principal/months;
-  var q=Math.pow(1+r,months);
-  return principal*r*q/(q-1);
-}
-function futureValue(principal,annualRate,years){
-  return principal*Math.pow(1+annualRate/100,years);
-}
-function years(){
-  var arr=[];
-  var boxes=checks.querySelectorAll("input");
-  for(var i=0;i<boxes.length;i++){
-    if(boxes[i].checked) arr.push(Number(boxes[i].value));
-  }
-  for(var j=0;j<customYears.length;j++) arr.push(customYears[j]);
-  arr.sort(function(a,b){return a-b});
-  var unique=[];
-  for(var k=0;k<arr.length;k++){
-    if(unique.indexOf(arr[k])===-1) unique.push(arr[k]);
-  }
-  return unique;
-}
-function renderCustom(){
-  customList.innerHTML="";
-  for(var i=0;i<customYears.length;i++){
-    (function(y){
-      var s=document.createElement("span");
-      s.style.cssText="display:inline-flex;align-items:center;gap:5px;margin:8px 6px 0 0;padding:7px 10px;border:1px solid #34343b;border-radius:999px;background:#1d1d21;font-size:13px";
-      s.innerHTML=y+"年 <button type='button' style='background:none;color:#aaa;padding:0;font-size:16px'>×</button>";
-      s.querySelector("button").onclick=function(){
-        customYears=customYears.filter(function(x){return x!==y});
-        renderCustom();render();
-      };
-      customList.appendChild(s);
-    })(customYears[i]);
-  }
-}
+var loan=document.getElementById("loan"),loanRate=document.getElementById("loanRate"),capital=document.getElementById("capital"),investRate=document.getElementById("investRate"),checks=document.getElementById("checks"),custom=document.getElementById("custom"),add=document.getElementById("add"),customList=document.getElementById("customList"),loanResults=document.getElementById("loanResults"),compareResults=document.getElementById("compareResults"),customYears=[];
+function yen(n){return Math.round(n).toLocaleString("ja-JP")+"円"} function man(n){return (n/10000).toLocaleString("ja-JP",{maximumFractionDigits:1})+"万円"}
+function pay(p,a,y){var n=y*12,r=a/100/12;if(r===0)return p/n;var q=Math.pow(1+r,n);return p*r*q/(q-1)}
+function fv(p,a,y){return p*Math.pow(1+a/100,y)}
+function getYears(){var a=[],b=checks.querySelectorAll("input");for(var i=0;i<b.length;i++)if(b[i].checked)a.push(+b[i].value);for(var j=0;j<customYears.length;j++)a.push(customYears[j]);a.sort(function(x,y){return x-y});return a.filter(function(x,i){return a.indexOf(x)===i})}
+function renderCustom(){customList.innerHTML="";customYears.forEach(function(y){var s=document.createElement("span");s.style.cssText="display:inline-flex;gap:5px;margin:8px 6px 0 0;padding:7px 10px;border:1px solid #34343b;border-radius:999px;background:#1d1d21;font-size:13px";s.innerHTML=y+"年 <button type='button' style='background:none;color:#aaa;padding:0'>×</button>";s.querySelector("button").onclick=function(){customYears=customYears.filter(function(x){return x!==y});renderCustom();render()};customList.appendChild(s)})}
 function render(){
-  var P=Number(loan.value)*10000;
-  var R=Number(loanRate.value);
-  var A=Number(capital.value)*10000;
-  var IR=Number(investRate.value);
-  var ys=years();
-
-  loanResults.innerHTML="";
-  compareResults.innerHTML="";
-
-  if(!(P>0) || !(R>=0) || !(A>=0) || A>P || !(IR>-100)){
-    loanResults.innerHTML="<div class='empty'>入力値を確認してください。頭金・投資額は借入金額以下にしてください。</div>";
-    compareResults.innerHTML="<div class='empty'>入力値を確認すると比較結果が表示されます。</div>";
-    return;
-  }
-  if(ys.length===0){
-    loanResults.innerHTML="<div class='empty'>返済期間を1つ以上選択してください。</div>";
-    compareResults.innerHTML="<div class='empty'>返済期間を選択すると比較結果が表示されます。</div>";
-    return;
-  }
-
-  for(var i=0;i<ys.length;i++){
-    var y=ys[i];
-
-    var m=monthlyPayment(P,R,y);
-    var total=m*y*12;
-    var interest=total-P;
-
-    var card=document.createElement("div");
-    card.className="card";
-    card.innerHTML="<h3>"+y+"年ローン</h3>"+
-      "<div class='metric'><div class='mlabel'>月々の返済額</div><div class='value large'>"+money(m)+"</div></div>"+
-      "<div class='metric'><div class='mlabel'>総支払額</div><div class='value'>"+man(total)+"</div></div>"+
-      "<div class='metric'><div class='mlabel'>総利息</div><div class='value'>"+man(interest)+"</div></div>";
-    loanResults.appendChild(card);
-
-    var reducedP=P-A;
-    var reducedM=monthlyPayment(reducedP,R,y);
-    var reducedTotal=reducedM*y*12;
-    var reducedInterest=reducedTotal-reducedP;
-    var saved=interest-reducedInterest;
-
-    var fv=futureValue(A,IR,y);
-    var gain=fv-A;
-    var hedge=interest===0?0:gain/interest*100;
-
-    /* 年率xでA円をy年運用した利益が、頭金による利息削減額savedと等しくなる年率 */
-    var breakeven=0;
-    if(A>0 && saved>0){
-      breakeven=(Math.pow(1+saved/A,1/y)-1)*100;
-    }
-
-    var net=gain-saved;
-
-    var cmp=document.createElement("div");
-    cmp.className="compare";
-    cmp.innerHTML="<h3>"+y+"年の場合</h3>"+
-      "<div class='block'><div class='block-title'>① "+man(A)+"を頭金にする</div>"+
-      "<div class='grid'>"+
-      "<div class='item'><div class='mlabel'>借入元本</div><div class='value'>"+man(reducedP)+"</div></div>"+
-      "<div class='item'><div class='mlabel'>月々の返済額</div><div class='value'>"+money(reducedM)+"</div></div>"+
-      "<div class='item'><div class='mlabel'>総利息</div><div class='value'>"+man(reducedInterest)+"</div></div>"+
-      "<div class='item'><div class='mlabel'>利息削減額</div><div class='value'>"+man(saved)+"</div></div>"+
-      "</div></div>"+
-      "<div class='block'><div class='block-title'>② "+man(A)+"をNISA等に投資</div>"+
-      "<div class='grid'>"+
-      "<div class='item'><div class='mlabel'>想定年利</div><div class='value'>"+IR.toFixed(1)+"%</div></div>"+
-      "<div class='item'><div class='mlabel'>"+y+"年後の評価額</div><div class='value'>"+man(fv)+"</div></div>"+
-      "<div class='item'><div class='mlabel'>運用益</div><div class='value'>"+man(gain)+"</div></div>"+
-      "<div class='item'><div class='mlabel'>ローン利息ヘッジ率</div><div class='value'>"+hedge.toFixed(1)+"%</div></div>"+
-      "</div></div>"+
-      "<div class='highlight'><div class='mlabel'>投資益 − 頭金による利息削減額</div>"+
-      "<div class='value'>"+(net>=0?"+":"")+man(net)+"</div>"+
-      "<div class='note'>単純比較上の差額です。損益分岐年利：約 "+breakeven.toFixed(2)+"%</div></div>";
-    compareResults.appendChild(cmp);
-  }
-}
-
-loan.addEventListener("input",render);
-loanRate.addEventListener("input",render);
-capital.addEventListener("input",render);
-investRate.addEventListener("input",render);
-
-checks.addEventListener("change",function(){render();});
-
-add.addEventListener("click",function(){
-  var y=Number(custom.value);
-  if(!Number.isInteger(y)||y<1||y>100){
-    alert("1〜100年の整数を入力してください。");
-    return;
-  }
-  var exists=false;
-  var boxes=checks.querySelectorAll("input");
-  for(var i=0;i<boxes.length;i++){if(Number(boxes[i].value)===y)exists=true;}
-  if(customYears.indexOf(y)===-1 && !exists) customYears.push(y);
-  custom.value="";
-  renderCustom();
-  render();
-});
-
-custom.addEventListener("keydown",function(e){
-  if(e.key==="Enter"){e.preventDefault();add.click();}
-});
-
-render();
+var P=+loan.value*10000,R=+loanRate.value,A=+capital.value*10000,IR=+investRate.value,ys=getYears();loanResults.innerHTML="";compareResults.innerHTML="";
+if(!(P>0)||!(R>=0)||!(A>=0)||A>P||!(IR>-100)){loanResults.innerHTML="<div class='empty'>入力値を確認してください。</div>";compareResults.innerHTML="<div class='empty'>入力値を確認すると比較結果が表示されます。</div>";return}
+if(!ys.length){loanResults.innerHTML="<div class='empty'>返済期間を1つ以上選択してください。</div>";compareResults.innerHTML="<div class='empty'>返済期間を選択してください。</div>";return}
+ys.forEach(function(y){
+var m=pay(P,R,y),total=m*y*12,interest=total-P;
+var c=document.createElement("div");c.className="card";c.innerHTML="<h3>"+y+"年ローン</h3><div class='metric'><div class='mlabel'>月々の返済額</div><div class='value large'>"+yen(m)+"</div></div><div class='metric'><div class='mlabel'>総支払額</div><div class='value'>"+man(total)+"</div></div><div class='metric'><div class='mlabel'>総利息</div><div class='value'>"+man(interest)+"</div></div>";loanResults.appendChild(c);
+var p2=P-A,m2=pay(p2,R,y),i2=m2*y*12-p2,saved=interest-i2,f=fv(A,IR,y),gain=f-A,cover=interest?gain/interest*100:0,diff=gain-saved,be=A>0&&saved>0?(Math.pow(1+saved/A,1/y)-1)*100:0;
+var w=document.createElement("div");w.style.marginTop="14px";w.innerHTML="<div class='section-head'><h3 style='margin:0;font-size:17px'>"+y+"年の場合</h3><span>① 頭金 / ② NISA</span></div><div class='compare-table-wrap'><table><thead><tr><th>比較項目</th><th class='"+(diff<0?"winner":"")+"'>① 頭金にする</th><th class='"+(diff>=0?"winner":"")+"'>② NISA等に投資</th></tr></thead><tbody><tr><td>投入金額</td><td><strong>"+man(A)+"</strong></td><td><strong>"+man(A)+"</strong></td></tr><tr><td>借入元本</td><td>"+man(p2)+"</td><td>"+man(P)+"</td></tr><tr><td>月々の返済額</td><td>"+yen(m2)+"</td><td>"+yen(m)+"</td></tr><tr><td>総利息</td><td>"+man(i2)+"</td><td>"+man(interest)+"</td></tr><tr><td>① 利息削減額</td><td><strong>"+man(saved)+"</strong></td><td>—</td></tr><tr><td>想定年利</td><td>—</td><td>"+IR.toFixed(1)+"%</td></tr><tr><td>"+y+"年後の評価額</td><td>—</td><td>"+man(f)+"</td></tr><tr><td>② 運用益</td><td>—</td><td><strong>"+man(gain)+"</strong></td></tr><tr><td>利息カバー率</td><td>—</td><td>"+cover.toFixed(1)+"%</td></tr></tbody></table></div><div class='formula'><b>② − ①</b> ＝ "+man(gain)+" − "+man(saved)+" ＝ <b>"+(diff>=0?"+":"")+man(diff)+"</b></div><div class='formula'><b>損益分岐となる想定年利</b>：約 "+be.toFixed(2)+"%</div>";compareResults.appendChild(w)
+})}
+loan.oninput=render;loanRate.oninput=render;capital.oninput=render;investRate.oninput=render;checks.onchange=render;
+add.onclick=function(){var y=+custom.value;if(!Number.isInteger(y)||y<1||y>100){alert("1〜100年の整数を入力してください。");return}var exists=customYears.indexOf(y)>=0,bs=checks.querySelectorAll("input");for(var i=0;i<bs.length;i++)if(+bs[i].value===y)exists=true;if(!exists)customYears.push(y);custom.value="";renderCustom();render()};
+custom.onkeydown=function(e){if(e.key==="Enter"){e.preventDefault();add.click()}};render();
 })();
 </script>
 </body>
